@@ -1,0 +1,49 @@
+{% extends "a1.html" %}
+{% block m1 %}
+
+<h1>Show Courses</h1>
+
+{% if data %}
+{% for k in data %}
+<table cellpadding="4" >
+    <tr>
+        <td>Course Id</td>
+        <td>{{k.course_id}}</td>
+    </tr>
+    <tr>
+        <td>Course Name </td>
+        <td>{{k.course_name}}</td>
+    </tr>
+    <tr>
+        <td>Fees</td>
+        <td>{{k.fees}}</td>
+    </tr>
+    <tr>
+        <td>Duration</td>
+        <td>{{k.duration}}</td>
+    </tr>
+</table>
+<table cellpadding="4">
+    <tr>
+        <td>
+            <form method="post" action="../edit_courses/">
+                {% csrf_token %}
+                <input type="hidden" name="H1" value="{{k.course_id}}">
+                <input type="submit" name="B1" value="Edit">
+            </form>
+        </td>
+        <td>
+            <form method="post" action="../delete_courses/">
+                {% csrf_token %}
+                <input type="hidden" name="H1" value="{{k.course_id}}">
+                <input type="submit" name="B1" value="Delete">
+            </form>
+        </td>
+    </tr>
+</table>
+<hr />
+
+{% endfor %}
+{% endif %}
+
+{% endblock %}

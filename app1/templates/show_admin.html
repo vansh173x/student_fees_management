@@ -1,0 +1,53 @@
+{% extends "a1.html" %}
+{% block m1 %}
+
+
+<h1>SHOW ADMIN</h1>
+{% if data1 %}
+    {% for k in data1 %}
+        <img src="../media/{{k.Photo}}" width="100" height="100"/>
+    {% endfor %}
+{% endif %}
+
+{% if data %}
+    {% for k in data %}
+<table cellpadding="3" cellspacing="4">
+    <tr>
+        <td>Name</td>
+        <td>{{k.Name}}</td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td>{{k.Address}}</td>
+    </tr>
+    <tr>
+        <td>Contact</td>
+        <td>{{k.Contact}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{k.Email}}</td>
+    </tr>
+</table>
+<table>
+    <tr>
+        <td>
+            <form method="post" action="../edit_admin/" >
+                {% csrf_token %}
+                <input type="hidden" name="H1" value="{{k.Email}}">
+                <input type="submit" name="B1" value="EDIT">
+            </form>
+        </td>
+        <td>
+            <form method="post" action="../delete_admin/">
+                {% csrf_token %}
+                <input type="hidden" name="H1" value="{{k.Email}}">
+                <input type="submit" name="B1" value="DELETE">
+            </form>
+        </td>
+    </tr>
+</table>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

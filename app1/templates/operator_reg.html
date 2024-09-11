@@ -1,0 +1,44 @@
+{% extends "a1.html" %}
+{% block m1 %}
+
+<h1>Operator Registration</h1>
+
+<table cellpadding="4">
+    <form method="post" action="../operator_reg/">
+        {% csrf_token %}
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="T1" id="txt1"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" name="T2" id="txt2"></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td><input type="text" name="T3" id="txt3"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="T4" id="txt4"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="text" name="T5" id="txt5"></td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input type="text" name="T6" id="txt6"></td>
+        </tr>
+        <tr>
+            <td> <button type="submit" value="REGISTER" name="B1">REGISTER</button></td>
+        </tr>
+
+
+    </form>
+</table>
+ {% if data %}
+    <h2>{{data}}</h2>
+    {% endif %}
+
+{% endblock %}

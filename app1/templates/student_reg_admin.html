@@ -1,0 +1,53 @@
+{% extends "a1.html" %}
+{% block m1 %}
+
+<h1>Student Registration</h1>
+
+<table cellpadding="4">
+    <form method="post" action="../student_reg_admin/">
+        {% csrf_token %}
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="T1" id="txt1"></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input type="radio" name="T2" id="txt2" value="Male"/>Male
+                <input type="radio" name="T2" id="txt3" value="Female"/>Female
+            </td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" name="T3" id="txt4"></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td><input type="text" name="T4" id="txt5"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="T5" id="txt6"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="text" name="T6" id="txt7"></td>
+        </tr>
+        <tr>
+            <td>Confirm Password</td>
+            <td><input type="text" name="T7" id="txt8"></td>
+        </tr>
+        <tr>
+            <td> <button type="submit" value="REGISTER" name="B1">REGISTER</button></td>
+        </tr>
+
+
+    </form>
+</table>
+ {% if data %}
+    <h2>{{data}}</h2>
+    {% endif %}
+
+<button><a href="../admin_home/">Back</a></button>
+
+{% endblock %}

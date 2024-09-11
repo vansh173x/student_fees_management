@@ -1,0 +1,32 @@
+{% extends "a1.html" %}
+{% block m1 %}
+<h1>Course Registeration</h1>
+
+<table cellpadding="4">
+    <form method="post" action="../course_reg/">
+        {% csrf_token %}
+        <tr>
+            <td>Course Name</td>
+            <td><input type="text" name="T1" id="txt1"></td>
+        </tr>
+        <tr>
+            <td>Fees</td>
+            <td><input type="text" name="T2" id="txt2"></td>
+        </tr>
+        <tr>
+            <td>Duration</td>
+            <td><input type="text" name="T3" id="txt3"></td>
+        </tr>
+        <tr>
+            <td><button type="submit" name="B1">Register</button></td>
+        </tr>
+    </form>
+</table>
+
+{% if data %}
+<h2>{{data}}</h2>
+{% endif %}
+
+<button><a href="../admin_home/">Back</a></button>
+
+{% endblock %}

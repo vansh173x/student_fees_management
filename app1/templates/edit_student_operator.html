@@ -1,0 +1,43 @@
+{% extends "a2.html" %}
+{% block m1 %}
+
+<h1>Edit and Save</h1>
+
+{% if data %}
+    {% for k in data %}
+<table>
+    <form method="post" action="../edit_student_operator1/">
+        {% csrf_token %}
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="T1" value="{{k.Name}}"></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>
+                <input type="radio" name="T2" value="Male">Male
+                <input type="radio" name="T2" value="Female">Female
+            </td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" name="T3" value="{{k.Address}}"></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td><input type="text" name="T4" value="{{k.Contact}}"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="T5" value="{{k.Email}}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit" name="B1" value="EDIT CHANGES">EDIT CHANGES</td>
+        </tr>
+    </form>
+</table>
+
+{% endfor %}
+{% endif %}
+
+{% endblock %}

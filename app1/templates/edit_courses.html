@@ -1,0 +1,35 @@
+{% extends "a1.html" %}
+{% block m1 %}
+
+<h1>Edit Course</h1>
+{% if data %}
+    {% for k in data %}
+<table cellpadding="4">
+    <form method="post" action="../edit_courses_1/">
+        {% csrf_token %}
+        <tr>
+            <td>Course Id</td>
+            <td><input readonly type="text" name="H1" value="{{k.course_id}}"></td>
+        </tr>
+        <tr>
+            <td>Course Name </td>
+            <td><input type="text" name="T1" value="{{k.course_name}}"></td>
+        </tr>
+        <tr>
+            <td>Fees </td>
+            <td><input type="text" name="T2" value="{{k.fees}}"></td>
+        </tr>
+        <tr>
+            <td>Duration</td>
+            <td><input type="text" name="T3" value="{{k.duration}}"></td>
+        </tr>
+        <tr>
+            <td><button type="submit" name="B1" value="Edit Changes">Edit Changes</button></td>
+        </tr>
+    </form>
+</table>
+
+{% endfor %}
+{% endif %}
+
+{% endblock %}

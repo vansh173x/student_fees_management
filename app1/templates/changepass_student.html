@@ -1,0 +1,35 @@
+{% extends "a3.html" %}
+{% block m1 %}
+
+<h1>CHANGE PASSWORD STUDENT</h1>
+
+    <table cellpadding="4">
+        <form method="post" action="../changepass_student/">
+            {% csrf_token %}
+            <tr>
+                <td>Old Password</td>
+                <td><input type="password" name="T1"></td>
+            </tr>
+            <tr>
+                <td>New Password</td>
+                <td><input type="password" name="T2"></td>
+            </tr>
+            <tr>
+                <td>Confirm New Password</td>
+                <td><input type="password" name="T3"></td>
+            </tr>
+            <tr>
+                <td><button type="submit" name="B1" value="Change">Change</button></td>
+            </tr>
+            <tr>
+            <td><button><a href="../student_home/">BACK</a></button></td>
+        </tr>
+        </form>
+    </table>
+
+{% if name %}
+<h2>{{name}}</h2>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "a2.html" %}
+{% block m1 %}
+
+<h1>OPERATOR PROFILE</h1>
+
+{% if data1 %}
+    {% for k in data1 %}
+        <img src="../media/{{k.Photo}}" width="100" height="100"/>
+    {% endfor %}
+<p><a href="../change_photo_operator/">Change</a></p>
+{% else %}
+    <form method="post" action="../upload_photo_operator/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>Photo :<input type="file" name="F1" /></p>
+        <p><input type="hidden" name="H1" value="{{k.email}}"></p>
+        <p><input type="submit" name="B1" value="Upload"></p>
+    </form>
+{% endif %}
+{% if data %}
+    {% for  k in data %}
+    <table cellpadding="4">
+        <tr>
+            <td>Name</td>
+            <td>{{k.Name}}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{k.Address}}</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>{{k.Contact}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{k.Email}}</td>
+        </tr>
+
+    </table>
+{% endfor %}
+
+{% elif result %}
+    <h2>DATA SAVED</h2>
+    <p><a href="../operator_home/">Continue</a></p>
+{% endif %}
+
+<button><a href="../operator_home/">Back</a></button>
+
+
+{% endblock %}

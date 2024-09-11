@@ -1,0 +1,38 @@
+{% extends "a1.html" %}
+{% block m1 %}
+
+<h1>Add Courses</h1>
+{% if data %}
+{% for k in data %}
+<table cellpadding="4">
+    <tr>
+        <td>Course Id</td>
+        <td>{{k.course_id}}</td>
+    </tr>
+    <tr>
+        <td>Course Name</td>
+        <td>{{k.course_name}}</td>
+    </tr>
+    <tr>
+        <td>Fees</td>
+        <td>{{k.fees}}</td>
+    </tr>
+    <tr>
+        <td>Duration</td>
+        <td>{{k.duration}}</td>
+    </tr>
+</table>
+<table cellpadding="4">
+    <form method="post" action="../add_courses_1/">
+        {% csrf_token %}
+        <input type="hidden" name="H1" value="{{email}}">
+        <input type="hidden" name="H2" value="{{k.course_id}}">
+        <input type="submit" name="B1" value="ADD">
+    </form>
+</table>
+{% endfor %}
+{% endif %}
+
+<button><a href="../admin_home/">Back</a></button>
+
+{% endblock %}8

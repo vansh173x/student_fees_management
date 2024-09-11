@@ -1,0 +1,104 @@
+{% extends "a3.html" %}
+{% block m1 %}
+
+<h1>STUDENT PROFILE</h1>
+
+{% if data1 %}
+    {% for k in data1 %}
+        <img src="../media/{{k.Photo}}" width="100" height="100"/>
+    {% endfor %}
+{% endif %}
+
+{% if data %}
+    {% for k in data %}
+<table cellpadding="3" cellspacing="4">
+    <tr>
+        <td>Name</td>
+        <td>{{k.Name}}</td>
+    </tr>
+    <tr>
+        <td>Gender</td>
+        <td>{{k.Gender}}</td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td>{{k.Address}}</td>
+    </tr>
+    <tr>
+        <td>Contact</td>
+        <td>{{k.Contact}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{k.Email}}</td>
+    </tr>
+</table>
+<hr />
+<table cellpadding="4">
+    <tr>
+        <td><h1>Courses</h1></td>
+    </tr>
+</table>
+{% endfor %}
+{% endif %}
+
+
+<table cellpadding="4" border="2" cellspacing="0">
+    <tr>
+        <th>#</th>
+        <th>Course Id</th>
+        <th>Course Name</th>
+        <th>Course Fees</th>
+        <th>Course Duration</th>
+        <th>Commencement Date</th>
+        <th>Paid</th>
+        <th>Due</th>
+    </tr>
+
+{% if data2 %}
+{% for k in data2 %}
+    <tr>
+        <td>{{k.0}}</td>
+        <td>{{k.1}}</td>
+        <td>{{k.3}}</td>
+        <td>{{k.4}}</td>
+        <td>{{k.5}}</td>
+        <td>{{k.6}}</td>
+        <td>{{k.7}}</td>
+        <td>{{k.8}}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+<h3>Total :{{total}}</h3>
+<h3>Paid :{{total_paid}}</h3>
+<h3>Due :{{total_due}}</h3>
+<hr />
+
+<h1>Transaction History</h1>
+<table cellpadding="4" border="2" cellspacing="0">
+    <th>Transaction Id</th>
+    <th> Student Course Id</th>
+    <th>Amount</th>
+    <th>Date Of Transaction</th>
+    <th>Remark</th>
+    {% if data3 %}
+    {% for k in data3 %}
+    <tr>
+        <td>{{k.t_id}}</td>
+        <td>{{k.course_id}}</td>
+        <td>{{k.amount}}</td>
+        <td>{{k.t_date}}</td>
+        <td>{{k.remark}}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
+<hr />
+
+{% if result %}
+<h2>DATA IS SAVED</h2>
+{% endif %}
+<button><a href="../student_home/">BACK</a></button>
+{% endblock %}

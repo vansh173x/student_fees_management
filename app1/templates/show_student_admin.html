@@ -1,0 +1,25 @@
+{% extends "a1.html" %}
+{% block m1 %}
+
+<h1>SHOW STUDENT</h1>
+
+{% if data %}
+    {% for k in data %}
+        Name :{{k.Name}}<br />
+        Gender :{{k.Gender}}<br />
+        Address :{{k.Address}}<br />
+        Contact :{{k.Contact}}<br />
+        Email :{{k.Email}}<br />
+<table>
+    <form method="post" action="../view_student_admin/">
+        {% csrf_token %}
+        <input type="hidden" name="H1" value="{{k.Email}}">
+        <input type="submit" name="B1" value="View Details">
+    </form>
+    <hr />
+</table>
+    {% endfor %}
+{% endif %}
+
+
+{% endblock %}

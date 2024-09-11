@@ -1,0 +1,26 @@
+{% extends "a1.html" %}
+{% block m1 %}
+
+<h1>Fess Deposit</h1>
+
+{% if data %}
+{% for k in data %}
+<form method="post" action="../pay_installment_1/">
+    {% csrf_token %}
+    <p></p><h2>{{k.course_id}}.{{k.course_name}}</h2></p>
+    <p>Fees :{{k.fees}}</p>
+    <p>Duration :{{k.duration}}</p>
+    <p>Commencement Date :{{k.commencement_date}}</p>
+    <p>Amount to pay :<input type="text" name="T1"></p>
+    <p>Remark :<input type="text" name="T2"></p>
+    <p><input type="submit" name="B1" value="Submit">
+    <input type="hidden" name="H1" value="{{k.email}}">
+    <input type="hidden" name="H2" value="{{k.st_course_id}}">
+    </p>
+</form>
+{% endfor %}
+{% endif %}
+
+<button><a href="../admin_home/">BACK</a></button>
+
+{% endblock %}

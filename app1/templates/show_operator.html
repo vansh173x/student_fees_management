@@ -1,0 +1,41 @@
+{% extends "a1.html" %}
+{% block m1%}
+
+<h1>SHOW OPERATOR</h1>
+
+{% if data %}
+    {% for k in data %}
+<table cellpadding="3" cellspacing="4">
+    <tr>
+        <td>Name</td>
+        <td>{{k.Name}}</td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td>{{k.Address}}</td>
+    </tr>
+    <tr>
+        <td>Contact</td>
+        <td>{{k.Contact}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{k.Email}}</td>
+    </tr>
+    <tr>
+        <td>
+            <form method="post" action="../view_operator_admin/">
+                {% csrf_token %}
+                <input type="hidden" name="H1" value="{{k.Email}}">
+                <input type="submit" value="View Details">
+            </form>
+        </td>
+    </tr>
+</table>
+    {% endfor %}
+{% endif %}
+
+
+
+
+{% endblock %}
